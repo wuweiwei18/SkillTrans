@@ -10,13 +10,25 @@ async function copyDirIfExists(src, dest) {
 }
 
 async function main() {
-  // Parse command line arguments for target IDEs
-  // e.g., node converter.js trae cursor
+  // Parse command line arguments for target IDEs, source and output directories
   const args = process.argv.slice(2);
-  const targetIdes = args.length > 0 ? args.map(arg => arg.toLowerCase()) : ['all'];
-  
-  const sourceDir = path.resolve(process.cwd(), 'examples', 'skills-main', 'skills');
-  const outputDir = path.resolve(process.cwd(), 'dist');
+  let sourceDir = path.resolve(process.cwd(), 'examples', 'skills-main', 'skills');
+  let outputDir = path.resolve(process.cwd(), 'dist');
+  const targetIdes = [];
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--src' && i + 1 < args.length) {
+      sourceDir = path.resolve(args[++i]);
+    } else if (args[i] === '--out' && i + 1 < args.length) {
+      outputDir = path.resolve(args[++i]);
+    } else {
+      targetIdes.push(args[i].toLowerCase());
+    }
+  }
+
+  if (targetIdes.length === 0) {
+    targetIdes.push('all');
+  }
   
   if (!(await fs.pathExists(sourceDir))) {
     console.error(`Source directory not found: ${sourceDir}`);

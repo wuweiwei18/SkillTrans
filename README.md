@@ -29,17 +29,33 @@ npm install
 
 ## 🚀 Usage
 
+### Method 1: Using GUI (Recommended for Beginners)
+
+Simply double-click `SkillTrans-GUI.exe` in the root directory!
+
+It provides a visual interface where you can:
+1. Select the source `skills` folder and output `dist` folder.
+2. Choose the target IDE from a dropdown menu.
+3. Click "Start Conversion" and watch the logs in real-time.
+
+*Note: You need to install [.NET Framework 4.0+](https://dotnet.microsoft.com/en-us/download/dotnet-framework) to run the GUI (Pre-installed on most Windows).*
+
+### Method 2: Command Line
+
 Place your Claude Code format skill folders (containing `SKILL.md` and optional `references/` or `scripts/`) into the `examples/skills-main/skills/` directory.
 
 Then, run the converter:
 
 ```bash
-# Convert to ALL supported IDE formats
+# Convert to ALL supported IDE formats (Default path)
 node converter.js
 
 # Convert to specific IDE formats only
 node converter.js trae cursor
 node converter.js antigravity
+
+# Specify custom source and output paths
+node converter.js trae cursor --src "D:\my-skills" --out "D:\my-dist"
 ```
 
 The generated configuration files will be output to the `dist/` directory. You can directly copy the `.trae` or `.cursor` folders to your project's root directory to apply the skills immediately.
