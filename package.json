@@ -1,0 +1,35 @@
+{
+  "name": "skill-trans",
+  "version": "1.0.0",
+  "description": "A CLI tool to convert Claude Code Skills into native configurations for various AI IDEs like Trae, Cursor, and Codebuddy.",
+  "main": "converter.js",
+  "bin": {
+    "skill-convert": "./converter.js"
+  },
+  "scripts": {
+    "start": "node converter.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuweiwei18/SkillTrans.git"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "trae",
+    "cursor",
+    "codebuddy",
+    "ai",
+    "skill",
+    "prompt",
+    "converter"
+  ],
+  "author": "wuweiwei18",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "fs-extra": "^11.3.0",
+    "gray-matter": "^4.0.3"
+  }
+}
